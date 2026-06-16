@@ -1,4 +1,5 @@
 package ChessLayer;
 
-public class Color {
+public enum Color {
+    BLACK,WHITE;
 }

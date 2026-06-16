@@ -1,2 +1,0 @@
-﻿# chess-system-java
-

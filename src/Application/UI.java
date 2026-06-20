@@ -13,8 +13,8 @@ import java.util.stream.Collectors;
 public class UI {
     public static final String RESET = "\u001B[0m";
     public static final String WHITE = "\u001B[37m";
-    public static final String YELLOW = "\u001B[33m";
-    public static final String GREEN = "\u001B[32m";
+    public static final String PINK = "\u001B[38;5;218m";
+    public static final String PURPLE = "\u001B[35m";
     public static final String BLACK = "\u001B[30m";
 
     public static final String BLUE_BACKGROUND = "\u001B[44m";
@@ -27,7 +27,7 @@ public class UI {
             return new ChessPosition(column, row);
         }
         catch (RuntimeException exception) {
-            throw new InputMismatchException("Invalid position. Insert values from a1 to h8 [PRESS ENTER TO CONTINUE].");
+            throw new InputMismatchException("Invalid position, insert a position  a1 to h8 [PRESS ENTER TO CONTINUE].");
         }
     }
 
@@ -39,9 +39,9 @@ public class UI {
         }
         else {
             if (piece.getColor() == Color.WHITE)
-                System.out.print(GREEN + piece + RESET);
+                System.out.print(PURPLE + piece + RESET);
             else
-                System.out.print(YELLOW + piece + RESET);
+                System.out.print(PINK + piece + RESET);
         }
         System.out.print(" ");
     }
@@ -74,15 +74,15 @@ public class UI {
     }
 
     public static void printMatch(ChessMatch match, List<ChessPiece> capturedPieces){
-        System.out.println("Black pieces are " + YELLOW + "yellow." + RESET);
-        System.out.println("White pieces are " + GREEN + "green." + RESET);
+        System.out.println("Black Pieces are " + PINK + "pink." + RESET);
+        System.out.println("White Pieces are " + PURPLE + "purple." + RESET);
         printBoard(match.getPieces());
         System.out.println();
         printCapturedPieces(capturedPieces);
         System.out.println();
         System.out.println(String.format("Turn: %d", match.getTurn()));
         if (!match.getCheckMate()) {
-            System.out.printf("Player round: %s\n", match.getCurrentPlayer());
+            System.out.printf("Turn of: %s\n", match.getCurrentPlayer());
             if (match.getCheck())
                 System.out.println("Check.");
         }
@@ -93,18 +93,18 @@ public class UI {
     }
 
     private static void printCapturedPieces(List<ChessPiece> capturedPieces) {
-        List<ChessPiece> white = capturedPieces.stream().filter(x -> x.getColor() == Color.WHITE).collect(Collectors.toList()); // Lista com as brancas
-        List<ChessPiece> black = capturedPieces.stream().filter(x -> x.getColor() == Color.BLACK).collect(Collectors.toList()); // Lista com as pretas
+        List<ChessPiece> WHITE = capturedPieces.stream().filter(x -> x.getColor() == Color.WHITE).collect(Collectors.toList()); // Lista com as brancas
+        List<ChessPiece> BLACK = capturedPieces.stream().filter(x -> x.getColor() == Color.BLACK).collect(Collectors.toList()); // Lista com as pretas
         System.out.println("Captured pieces:");
-        System.out.print("White: ");
-        System.out.print(GREEN);
-        for (ChessPiece piece : white) {
+        System.out.print("WHITE: ");
+        System.out.print(PURPLE);
+        for (ChessPiece piece : WHITE) {
             System.out.print(piece.toString() + " ");
         }
         System.out.println(RESET);
-        System.out.print("Black: ");
-        System.out.print(YELLOW);
-        for (ChessPiece piece : black) {
+        System.out.print("BLACK: ");
+        System.out.print(PINK);
+        for (ChessPiece piece : BLACK) {
             System.out.print(piece.toString() + " ");
         }
         System.out.println(RESET);

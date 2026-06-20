@@ -23,14 +23,15 @@ public class ChessPosition {
     }
 
     protected Position toPosition(){
-        return new Position(8 - linha, 'a' - coluna);
+        return new Position(8 - linha, coluna - 'a');
     }
 
     protected static ChessPosition fromPosition(Position position){
         return new ChessPosition((char)('a' + position.getColuna()), 8 - position.getLinha());
     }
 
-    public String ToString(){
+    @Override
+    public String toString(){
         return ""+coluna+linha;
     }
 }

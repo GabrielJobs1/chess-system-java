@@ -80,7 +80,7 @@ public class Pawn extends ChessPiece {
 
                 Position posRight = new Position(position.getLinha(), position.getColuna() + 1);
                 if (getBoard().positionExists(posRight) && isThereOpponentPiece(posRight) && getBoard().piece(posRight) == chessMatch.getEnPassantVulnerable())
-                    aux[posRight.getLinha() + 1][posRight.getColuna()] = true
+                    aux[posRight.getLinha() + 1][posRight.getColuna()] = true;
             }
         }
         return aux;
